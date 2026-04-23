@@ -77,3 +77,33 @@ JOIN artists ON albums.ArtistId = artists.ArtistId
 GROUP BY NombreCliente , NombreArtista
 
 --11
+--11
+SELECT  
+c.FirstName AS NombreCliente,
+a.Name AS NombreArtista,
+c.city AS Ciudad,
+tracks.Name AS NombreCancion,
+genres.Name AS Genero
+FROM customers c, artists a 
+JOIN invoices ON c.CustomerId = invoices.CustomerId
+JOIN invoice_items ON invoices.InvoiceId = invoice_items.InvoiceId
+JOIN tracks ON tracks.trackId = invoice_items.trackId
+JOIN albums ON tracks.AlbumId = albums.AlbumId
+JOIN artists ON albums.ArtistId = artists.ArtistId
+JOIN genres ON genres.GenreId = tracks.GenreId
+GROUP BY NombreCliente , NombreArtista
+
+--12 
+
+SELECT *
+FROM employees
+JOIN customers ON employees.EmployeeId = customers.SupportRepId
+JOIN invoices ON customers.CustomerId = invoices.CustomerId
+JOIN invoice_items ON invoices.InvoiceId = invoice_items.InvoiceId
+JOIN tracks ON invoice_items.TrackId = tracks.TrackId
+JOIN albums ON tracks.AlbumId = albums.AlbumId
+JOIN artists ON albums.ArtistId = artists.ArtistId
+JOIN genres ON tracks.GenreId = genres.GenreId
+JOIN media_types ON tracks.MediaTypeId = media_types.MediaTypeId
+JOIN playlist_track ON tracks.TrackId = playlist_track.TrackId
+JOIN playlists ON playlist_track.PlaylistId = playlists.PlaylistId
