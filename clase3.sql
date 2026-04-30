@@ -64,7 +64,7 @@ GROUP BY Genero
 ORDER BY CantCanciones DESC
 
 --10 Mostrar el nombre del cliente
--- nombre del artista de las canciones que ha comprado, 
+  
 SELECT 
 c.FirstName AS NombreCliente,
 a.Name AS NombreArtista
@@ -76,7 +76,6 @@ JOIN albums ON tracks.AlbumId = albums.AlbumId
 JOIN artists ON albums.ArtistId = artists.ArtistId
 GROUP BY NombreCliente , NombreArtista
 
---11
 --11
 SELECT  
 c.FirstName AS NombreCliente,
